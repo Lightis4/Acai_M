@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#100b16">
+    <meta name="description" content="Açaí Maromba: açaí cremoso, combos especiais e energia para o seu treino.">
+    <title>Açaí Maromba | Energia em cada colherada</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="#inicio" class="logo">AÇAÍ <span>MAROMBA</span><small>ENERGIA EM CADA COLHERADA</small></a>
+
+        <nav class="navegacao">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Cardápio</a>
+            <a href="#combos">Combos</a>
+            <a href="#sobre">Sobre nós</a>
+        </nav>
+
+        <button class="botao-carrinho" onclick="abrirCarrinho()">
+            <span>🛒</span> Carrinho
+            <span class="contador" id="contador">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-conteudo">
+                <span class="etiqueta">💪 SEU PRÉ-TREINO FAVORITO</span>
+                <h1>MAIS FORÇA.<br>MAIS AÇAÍ.<br><span>MAIS MAROMBA!</span></h1>
+                <p>O sabor que acompanha sua rotina. Monte seu copo, escolha seus adicionais e aproveite cada colherada.</p>
+
+                <div class="hero-botoes">
+                    <a href="#produtos" class="botao-principal">MONTAR MEU AÇAÍ ↗</a>
+                    <a href="#combos" class="botao-secundario">Ver combos</a>
+                </div>
+
+                <div class="hero-dados">
+                    <div><strong>100%</strong><span>Sabor de verdade</span></div>
+                    <div><strong>+8</strong><span>Opções no cardápio</span></div>
+                    <div><strong>TOP</strong><span>Combinações</span></div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-circulo"></div>
+                <div class="hero-raios">✦</div>
+                <div class="hero-acai">🥣</div>
+                <div class="hero-selo">FOCO<br>NO SABOR!</div>
+                <div class="hero-legenda">SEU MOMENTO.<br>SUA ENERGIA.</div>
+            </div>
+        </section>
+
+        <section class="faixa">
+            <span>💪 ENERGIA</span>
+            <span>✦ SABOR</span>
+            <span>🔥 ATITUDE</span>
+            <span>🍇 AÇAÍ</span>
+            <span>💪 ENERGIA</span>
+        </section>
+
+        <section class="cardapio secao" id="produtos">
+            <div class="titulo-secao">
+                <span class="etiqueta">ESCOLHA SUA COMBINAÇÃO</span>
+                <h2>O CARDÁPIO <span>MAROMBA</span></h2>
+                <p>Do tradicional ao turbinado: seu próximo favorito está aqui.</p>
+            </div>
+
+            <div class="filtros">
+                <button class="filtro ativo" onclick="filtrarProdutos('todos', this)">Todos</button>
+                <button class="filtro" onclick="filtrarProdutos('tradicional', this)">Tradicionais</button>
+                <button class="filtro" onclick="filtrarProdutos('especial', this)">Turbinados</button>
+                <button class="filtro" onclick="filtrarProdutos('bebida', this)">Bebidas</button>
+            </div>
+
+            <div class="grade-produtos" id="listaProdutos"></div>
+        </section>
+
+        <section class="combo secao" id="combos">
+            <div class="combo-texto">
+                <span class="etiqueta">🔥 COMBO DA GALERA</span>
+                <h2>SEU TREINO<br>PEDE UM <span>COMBO!</span></h2>
+                <p>Dois açaís de 300 ml para dividir com o parceiro de treino. E ainda tem granola de cortesia nesta oferta fictícia.</p>
+                <button class="botao-principal" onclick="adicionarCombo()">QUERO O COMBO — R$ 24,90</button>
+                <small>* Promoção demonstrativa. Valores e produtos são fictícios.</small>
+            </div>
+            <div class="combo-visual">
+                <div class="combo-circulo"></div>
+                <div class="combo-emoji">🍨💪</div>
+                <div class="combo-preco">R$ 24,90</div>
+            </div>
+        </section>
+
+        <section class="sobre secao" id="sobre">
+            <div class="sobre-icone">🏋️</div>
+            <div>
+                <span class="etiqueta">NOSSA VIBE</span>
+                <h2>AQUI É <span>FOCO E SABOR.</span></h2>
+                <p>A Açaí Maromba é uma marca fictícia criada para quem curte treinar, comer bem e aproveitar combinações deliciosas. Escolha seus favoritos e monte seu pedido!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <a href="#inicio" class="logo">AÇAÍ <span>MAROMBA</span><small>ENERGIA EM CADA COLHERADA</small></a>
+        <p>Mais sabor para acompanhar sua rotina. 💪</p>
+        <span>© 2026 Açaí Maromba — Projeto demonstrativo.</span>
+    </footer>
+
+    <div class="fundo-modal" id="fundoModal" onclick="fecharCarrinhoFora(event)">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="tituloCarrinho">
+            <div class="modal-cabecalho">
+                <div>
+                    <span class="etiqueta">SEU PEDIDO</span>
+                    <h2 id="tituloCarrinho">CARRINHO 🛒</h2>
+                </div>
+                <button class="botao-fechar" onclick="fecharCarrinho()" aria-label="Fechar carrinho">✕</button>
+            </div>
+
+            <div id="itensCarrinho"></div>
+
+            <div class="resumo">
+                <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+                <div><span>Entrega</span><strong id="entrega">Grátis</strong></div>
+                <div class="linha-total"><span>TOTAL</span><strong id="total">R$ 0,00</strong></div>
+            </div>
+
+            <button class="botao-principal botao-finalizar" onclick="finalizarCompra()">FINALIZAR PEDIDO ↗</button>
+            <button class="botao-continuar" onclick="fecharCarrinho()">Continuar comprando</button>
+            <p class="aviso-modal">Compra fictícia: nenhum pagamento será realizado.</p>
+        </div>
+    </div>
+
+    <div class="notificacao" id="notificacao" role="status"></div>
+</body>
+</html>
